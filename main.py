@@ -8,7 +8,7 @@ from crear_guion import crear_guion_viral
 import tempfile
 
 # API Key ShadAI
-os.environ["SHADAI_API_KEY"] = "e67e971f-10a1-475f-be95-e0f27f683830"
+os.environ["SHADAI_API_KEY"] = "API_KEY"
 
 # Historial en memoria
 historial = []
@@ -68,3 +68,4 @@ async def ver_guion(request: Request, guion_id: str):
         "guion": "⚠️ Guion no encontrado.",
         "historial": historial
     })
+
