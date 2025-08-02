@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Contenidos Virales</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>🗂 Historial</h2>
+        <ul>
+            {% for item in historial %}
+                <li>
+                    <a href="/guion/{{ item.id }}" class="{{ 'video-link' if item.tipo == 'video' else 'post-link' }}">
+                        {{ '🎥' if item.tipo == 'video' else '📰' }} {{ item.titulo }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <h1> Viral Content Creator</h1>
+        <form method="post" action="/" enctype="multipart/form-data">
+            <input type="text" name="tendenciaInput" placeholder="#Tema o tendencia viral" required>
+
+            <label>
+                <input type="radio" name="tipo" value="video" checked> 🎥 Video
+            </label>
+            <label>
+                <input type="radio" name="tipo" value="post"> 📰 Publicación
+            </label>
+
+            <br><br>
+            <label style="display: block; margin-top: 10px;">
+                Imagen opcional:
+                <input type="file" name="imagen" accept="image/*">
+            </label>
+
+            <button type="submit">Generar</button>
+        </form>
+
+
+        {% if guion %}
+        <div class="resultado">
+            <h2>Generado...</h2>
+            <pre>{{ guion }}</pre>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
